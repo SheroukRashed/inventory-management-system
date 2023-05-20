@@ -44,8 +44,9 @@ Then seed the database ``php artisan db:seed``
 To run tests use ``composer tests``
 
 ### Database Structure
+The database consists of 5 main models: Product - Ingredient - Inventory - Order - Order Item.
 
-TODO:: WORK ON THAT
+![My Image](docs/images/Image.png)
 
 ### API Documentation / Consumers' Guide
 1) Creating Order.
@@ -77,3 +78,47 @@ TODO:: WORK ON THAT
       1) ```products``` attribute is required.
       2) ```product_id quantity``` are also required for each product.
       3) The first product should always be a compound product.
+
+## Testing Guide
+
+Those are the tested features:
+
+* RegistrationTest
+    * test_required_name_for_registration
+    * test_required_email_for_registration
+    * test_valid_format_email_for_registration
+    * test_unique_email_for_registration
+    * test_required_password_for_registration
+    * test_required_confirm_password_for_registration
+    * test_wrong_confirm_password_for_registration
+    * test_user_registration_successfully
+    
+* LoginTest
+    * test_required_email_for_login
+    * test_valid_format_email_for_login
+    * test_required_password_for_login
+    * test_user_login_fails_on_wrong_credentials
+    * test_user_login_successfully
+    
+* LogoutTest
+    * test_user_logout_failed
+    * test_user_logout_successfully
+
+* OrderTest
+    * test_failed_placing_order_for_unauthorized_users
+    * test_required_products_for_placing_order
+    * test_required_product_id_for_placing_order
+    * test_exist_product_id_for_placing_order
+    * test_required_quantity_for_placing_order
+    * test_numeric_quantity_for_placing_order
+    * test_gth_zero_quantity_for_placing_order
+    * test_order_item_type_rule_for_placing_order
+    * test_placing_order_successfully
+
+* OrderItemTest
+    * test_order_item_creation_for_both_types_of_products
+
+* InventoryTest
+    * test_placing_order_fails_for_out_of_stock_items
+    * test_sending_email_when_inventory_reaches_50_Percent
+    * test_ingredient_products_stock_size_on_placing_order
