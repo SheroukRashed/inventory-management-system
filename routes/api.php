@@ -23,5 +23,4 @@ Route::post('login', 'App\Http\Controllers\API\AuthController@login');
 Route::post('logout', 'App\Http\Controllers\API\AuthController@logout');
 Route::middleware('auth:sanctum')->group( function () {
     Route::resource('orders', 'App\Http\Controllers\API\OrderController')->only('store');
-    Route::resource('inventories', 'App\Http\Controllers\API\InventoryController')->only('update');
 });
